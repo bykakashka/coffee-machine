@@ -12,8 +12,7 @@ namespace Coffee_Machine.Controllers
 
         public ActionResult History(string name)
         {
-            List<Purchase> purchases = new List<Purchase> ();
-
+            
             var p = (from i in db.Purchases where i.Name == name orderby i.Date select i).ToList();
             
             return View (p);
