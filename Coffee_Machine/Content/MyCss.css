@@ -9,18 +9,15 @@ header {
     padding-left : 85%;
 }
 
-login {
-    background : red;
-    position : inherit;
-    top : 10px;
-}
-
 content {
     position : static;
     background : red;
 }
 
-footer {
-    position : absolute;
-    bottom : 0px;
+true {
+    color : black;
+}
+
+false {
+    color : grey;
 }

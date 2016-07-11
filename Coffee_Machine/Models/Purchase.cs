@@ -15,6 +15,9 @@ namespace Coffee_Machine
         [Column("date")]
         public DateTime Date { get; set; }
 
+        [Column("enable")]
+        public bool Enable { get; set; }
+
         public Purchase ()
         {
         }

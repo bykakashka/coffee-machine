@@ -1,4 +1,6 @@
 ﻿<!DOCTYPE html>
+@using Coffee_Machine
+
 <html>
 <link href="@Url.Content("~/Content/MyCss.css")" rel="stylesheet" type="text/css" />
 @{
@@ -21,14 +23,20 @@
         }
     } else {
         <h2>hello, @login</h2> <br>
+
+        <h2> your balance is: @((new UserContext()).Users.Where(c => c.Login == login).First().Balance)</h2> <br>
+
         using(Html.BeginForm("Logout", "Autorisation")) {
             <input type = "submit" value = "logout">
         }
         using(Html.BeginForm("History", "Purchase")) {
-            <input type="submit" value="find history by name"/>
+            <input type="submit" value="history"/>
         }
-    }
+        using(Html.BeginForm("Index", "Home")) {
+            <input type="submit" value="main"/>
+        }
 
+    }
     </header>
     <div align="center">
         @RenderBody()
