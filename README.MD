@@ -1,2 +1,2 @@
-http://vk.com/belka4ever vk
-gmail : denisbelyanski@gmail.com
+[vk] http://vk.com/belka4ever
+denisbelyanski@gmail.com
