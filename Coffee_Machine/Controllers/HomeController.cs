@@ -11,11 +11,7 @@ namespace Coffee_Machine.Controllers
     {
         public ActionResult Index ()
         {
-            UserContext db = new UserContext ();
-            List<User> users = db.Users.ToList ();
-
-            return View (users);
+            return View ();
         }
     }
 }
-

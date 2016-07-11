@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+<h5>
+@if (@Model.Count != 0) {
+    <table>
+        <tr>
+            <td>name</td>
+            <td align="center">date</td>
+        </tr>
+        @foreach (var i in @Model) {
+        <tr>
+            <td><h2>@i.Name</h2></td>
+            <td><h2>@i.Date</h2></td>
+        </tr>
+        }
+    </table>
+}
+</h5>
+</body>
+@using(Html.BeginForm("Index", "Home")) {
+    <input type="submit" value="back"/>
+}
+</html>
