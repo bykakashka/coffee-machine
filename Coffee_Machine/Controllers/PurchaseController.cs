@@ -10,20 +10,20 @@ namespace Coffee_Machine.Controllers
     {
         private PurchaseContext db = new PurchaseContext();
 
-        public ActionResult History(string name)
+        public ActionResult History()
         {
-            
+            string name = (string) Session ["name"];
+
             var p = (from i in db.Purchases where i.Name == name orderby i.Date select i).ToList();
             
             return View (p);
         }
 
-        public ActionResult AddPurchase(string name) {
-            Console.Write ("hi");
+        public ActionResult AddPurchase() {
             Purchase purchase = new Purchase ();
 
             purchase.Date = DateTime.UtcNow;
-            purchase.Name = name;
+            purchase.Name = (string) Session["name"];
 
             db.Purchases.Add (purchase);
             db.SaveChanges ();

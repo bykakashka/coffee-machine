@@ -1,10 +1,37 @@
 ﻿<!DOCTYPE html>
 <html>
+<link href="@Url.Content("~/Content/MyCss.css")" rel="stylesheet" type="text/css" />
+@{
+    var login = Session["name"];
+}
+
 <head>
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    @RenderBody()
+    <header>
+    @if (login == null) {
+        <h2>please login: </h2>
+
+        using(Html.BeginForm("Login", "Autorisation")) {
+            <input type="text" name = "login"/>
+            <br>
+            <input type="submit" value = "login"/>
+            <br>
+        }
+    } else {
+        <h2>hello, @login</h2> <br>
+        using(Html.BeginForm("Logout", "Autorisation")) {
+            <input type = "submit" value = "logout">
+        }
+        using(Html.BeginForm("History", "Purchase")) {
+            <input type="submit" value="find history by name"/>
+        }
+    }
+
+    </header>
+    <div align="center">
+        @RenderBody()
+    </div>
 </body>
 </html>
-

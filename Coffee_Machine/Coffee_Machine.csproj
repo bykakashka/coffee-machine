@@ -93,6 +93,7 @@
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\PurchaseContext.cs" />
     <Compile Include="Controllers\PurchaseController.cs" />
+    <Compile Include="Controllers\AutorisationController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -104,6 +105,8 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Views\Purchase\History.cshtml" />
+    <Content Include="Views\Home\test.aspx" />
+    <Content Include="Content\MyCss.css" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

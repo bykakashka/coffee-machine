@@ -1,0 +1,26 @@
+﻿input {
+    margin-bottom : 10px;
+}
+
+header {
+    position : static;
+    top : 0px;
+    padding-bottom : 150px;
+    padding-left : 85%;
+}
+
+login {
+    background : red;
+    position : inherit;
+    top : 10px;
+}
+
+content {
+    position : static;
+    background : red;
+}
+
+footer {
+    position : absolute;
+    bottom : 0px;
+}

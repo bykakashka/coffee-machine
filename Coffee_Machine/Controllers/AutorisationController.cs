@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Mvc.Ajax;
 
 namespace Coffee_Machine.Controllers
 {
-    public class HomeController : Controller
+    public class AutorisationController : Controller
     {
-        public ActionResult Index ()
+        public ActionResult Index()
         {
             return View ();
         }
 
         public ActionResult Login (string login) {
             Session ["name"] = login;
-            return View ();
+            return RedirectToAction ("Index", "Home");
+        }
+
+        public ActionResult Logout() {
+            Session ["name"] = null;
+            return RedirectToAction ("Index", "Home");
         }
     }
 }

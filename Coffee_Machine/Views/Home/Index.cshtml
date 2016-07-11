@@ -1,13 +1,13 @@
-﻿@using(Html.BeginForm("History", "Purchase"))
-{
-    <input type="text" name="name"/> 
-    <br>
-    <input type="submit" value="find history by name"/>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{
+    var login = Session["name"];
+}
 @using(Html.BeginForm("AddPurchase", "Purchase"))
 {
-    <input type="text" name="name"/>
-    <br>
-    <input type="submit" value="add purchase"/>
+    if (login != null) {
+        <input type="submit" value="add purchase"/>
+    }
 }
