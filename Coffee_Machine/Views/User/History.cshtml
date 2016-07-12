@@ -24,7 +24,7 @@
                 }
 
                 @if ( (time.TotalMinutes < 5) && (i.Enable == true) ){
-                using(Html.BeginForm("DeletePurchase", "Purchase")) {
+                using(Html.BeginForm("DeletePurchase", "User")) {
                     <input type="hidden" value="@i.Id" name="id"/>
                     <input type="submit" value="undo"/>
                 }

@@ -9,8 +9,8 @@ namespace Coffee_Machine
         [Column("id")]
         public int Id { get; set; }
 
-        [Column("name")]
-        public string Name { get; set; }
+        [Column("user_id")]
+        public int User_id { get; set; }
 
         [Column("date")]
         public DateTime Date { get; set; }

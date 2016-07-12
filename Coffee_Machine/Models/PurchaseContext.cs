@@ -14,7 +14,7 @@ namespace Coffee_Machine
             base.OnModelCreating(modelBuilder);
         }
 
-        public PurchaseContext () :base("UserContext")
+        public PurchaseContext () : base("CoffeeMachine")
         {
         }
     }

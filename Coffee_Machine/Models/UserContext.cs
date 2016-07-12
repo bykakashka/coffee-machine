@@ -8,7 +8,7 @@ namespace Coffee_Machine
     {
         public DbSet<User> Users { get; set; }
 
-        public UserContext ()
+        public UserContext () : base("CoffeeMachine")
         {
         }
     }

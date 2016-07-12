@@ -9,14 +9,16 @@ namespace Coffee_Machine
         [Column("login")]
         public string Login { get; set; }
 
-        [Column("password")]
-        public string Password { get; set; }
-
         [Column("id")]
         public int Id { get; set; }
 
         [Column("balance")]
         public decimal Balance { get; set; }
+
+        public User (string login) {
+            Login = login;
+            Balance = 0;
+        }
 
         public User ()
         {

@@ -5,7 +5,7 @@
 @{
     var login = Session["name"];
 }
-@using(Html.BeginForm("AddPurchase", "Purchase"))
+@using(Html.BeginForm("AddPurchase", "User"))
 {
     if (login != null) {
         <input type="submit" value="add purchase"/>
