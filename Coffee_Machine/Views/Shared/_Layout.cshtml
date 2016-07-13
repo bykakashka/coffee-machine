@@ -34,8 +34,12 @@
         }
 
         if (isRoot) {
-            using(Html.BeginForm("Index", "Admin")) {
+            using(Html.BeginForm("Users", "Admin")) {
                 <input type="submit" value="show all users"/>
+                }
+
+            using(Html.BeginForm("CoffeeCost", "Admin")) {
+                <input type="submit" value="coffee cost"/>
                 }
         }
 

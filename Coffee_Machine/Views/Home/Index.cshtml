@@ -1,10 +1,7 @@
-﻿@{
-    var login = Session["name"];
-}
-
-@using(Html.BeginForm("AddPurchase", "User"))
+﻿@using(Html.BeginForm("AddPurchase", "User"))
 {
-    if (login != null) {
+    if (@Model.User.Login != null) {
         <input type="submit" value="add purchase"/>
+        <h5>today's cost: @Model.Cost</h5>
     }
 }

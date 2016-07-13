@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>CoffeeCost</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>new cost</td>
+    @using(Html.BeginForm("AddCoffeeCost", "Admin")) {
+        <td><input type="text" name="cost"/></td>
+        <td><input type="submit" value="add new"/></td>
+    }
+        </tr>
+    </table>
+    @if (@Model.CostHistory.Count != 0) {
+        <table border="1">
+            <tr>
+                <td align="center">begin date</td>
+                <td align="center">end date</td>
+                <td align="center">cost</td>
+            </tr>
+        @foreach(var i in @Model.CostHistory) {
+            <tr>
+                <td>@i.BeginDate</td>
+                <td>@if (i.EndDate != new DateTime(3000, 1, 1)) {@i.EndDate}</td>
+                <td align="center">@i.Cost</td>
+            </tr>
+        }
+        </table>
+    }
+</body>
+</html>
+

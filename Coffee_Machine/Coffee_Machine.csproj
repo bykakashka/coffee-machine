@@ -94,13 +94,16 @@
     <Compile Include="Models\PurchaseContext.cs" />
     <Compile Include="Controllers\AutorisationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Models\CostHostory.cs" />
     <Compile Include="Models\CostHistoryContext.cs" />
     <Compile Include="Models\UserAndPurchases.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Models\AdminAndUsers.cs" />
     <Compile Include="Models\AdminAndChangedUser.cs" />
     <Compile Include="Models\AdminAndUserHistory.cs" />
+    <Compile Include="Models\CostHistory.cs" />
+    <Compile Include="Models\AdminAndCostHistory.cs" />
+    <Compile Include="Models\UserAndTodayCost.cs" />
+    <Compile Include="Models\Cnstants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
@@ -113,9 +116,10 @@
     <Content Include="Content\MyCss.css" />
     <Content Include="Views\User\History.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Change.cshtml" />
     <Content Include="Views\Admin\UserHistory.cshtml" />
+    <Content Include="Views\Admin\CoffeeCost.cshtml" />
+    <Content Include="Views\Admin\Users.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

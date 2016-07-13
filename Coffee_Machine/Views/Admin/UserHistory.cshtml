@@ -5,7 +5,7 @@
 </head>
 <body>
     Name: @Model.UserAndPurchases.User.Login
-    @using(Html.BeginForm("Index", "Admin")) {
+    @using(Html.BeginForm("Users", "Admin")) {
         <input type="submit" value="back"/>
     }
     @if (@Model.UserAndPurchases.Purchases.Count != 0) {
@@ -25,7 +25,7 @@
         }
     </table>
     }
-    @using(Html.BeginForm("Index", "Admin")) {
+    @using(Html.BeginForm("Users", "Admin")) {
         <input type="submit" value="back"/>
     }
 

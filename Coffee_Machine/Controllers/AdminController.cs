@@ -21,7 +21,7 @@ namespace Coffee_Machine.Controllers
             return base.CreateActionInvoker ();
         }
 
-        public ActionResult Index()
+        public ActionResult Users()
         {
             if (admin == null)
                 return RedirectToAction ("Index", "Home");
@@ -52,7 +52,7 @@ namespace Coffee_Machine.Controllers
             if (decimal.TryParse (newBalance, out balance)) {
                 balance = decimal.Parse (newBalance);
             } else {
-                return RedirectToAction ("Index");
+                return RedirectToAction ("Users");
             }
             var db = new UserContext ();
 
@@ -61,7 +61,34 @@ namespace Coffee_Machine.Controllers
                 user.Balance = balance;
             db.SaveChanges ();
 
-            return RedirectToAction ("Index");
+            return RedirectToAction ("Users");
+        }
+
+        public ActionResult AddCoffeeCost(string cost) {
+            decimal newCost;
+            if (decimal.TryParse (cost, out newCost)) {
+                newCost = decimal.Parse (cost);
+            } else
+                return RedirectToAction ("CoffeeCost");
+            Console.Write (newCost);
+            var coffeHistory = new CostHistoryContext ();
+            var lastHistory = coffeHistory.History.Where (c => c.EndDate == Constants.ENDDATE).FirstOrDefault ();
+
+            if (lastHistory == null)
+                return RedirectToAction ("CoffeeCost");
+            
+            lastHistory.EndDate = DateTime.Now;
+            var newCoffeeHistory = new CostHistory {Cost = newCost, BeginDate = lastHistory.EndDate, EndDate = Constants.ENDDATE};
+            coffeHistory.History.Add (newCoffeeHistory);
+            coffeHistory.SaveChanges ();
+
+            return RedirectToAction("CoffeeCost");
+        }
+
+        public ActionResult CoffeeCost() {
+            var costHistory = new CostHistoryContext ().History.OrderByDescending (c => c.BeginDate).ToList ();
+
+            return View (new AdminAndCostHistory { User = admin, CostHistory = costHistory});
         }
 
         public ActionResult UserHistory(int id) {

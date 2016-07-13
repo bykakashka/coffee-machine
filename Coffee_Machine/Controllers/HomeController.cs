@@ -13,9 +13,12 @@ namespace Coffee_Machine.Controllers
         {
             string name = (string) Session ["name"];
             if (name == null)
-                return View(new UserAndPurchases ());
+                return View(new UserAndTodayCost ());
             else
-                return View(new UserAndPurchases{ User = new UserContext().Users.Where(c => c.Login == name).FirstOrDefault() });
+                return View(new UserAndTodayCost{ 
+                    User = new UserContext().Users.Where(c => c.Login == name).FirstOrDefault(),
+                    Cost = new CostHistoryContext().History.Where(c => c.EndDate == Constants.ENDDATE).FirstOrDefault().Cost                   
+                });
         }
     }
 }
