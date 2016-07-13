@@ -68,7 +68,6 @@ namespace Coffee_Machine.Controllers
             if (admin == null)
                 return RedirectToAction ("Index", "Home");
             
-            User changedUser = new UserContext ().Users.Where (c => c.Id == id).FirstOrDefault ();
             UserAndPurchases userAndPerchases = new UserAndPurchases {
                 User = new UserContext ().Users.Where (c => c.Id == id).FirstOrDefault (),
                 Purchases = new PurchaseContext().Purchases.Where(c => c.User_id == id).OrderByDescending(c => c.Date).ToList()
