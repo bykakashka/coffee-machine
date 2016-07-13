@@ -1,0 +1,23 @@
+﻿input {
+    margin-bottom : 10px;
+}
+
+header {
+    position : static;
+    top : 0px;
+    padding-bottom : 150px;
+    padding-left : 85%;
+}
+
+content {
+    position : static;
+    background : red;
+}
+
+true {
+    color : black;
+}
+
+false {
+    color : grey;
+}

@@ -11,11 +11,11 @@ namespace Coffee_Machine.Controllers
     {
         public ActionResult Index ()
         {
-            UserContext db = new UserContext ();
-            List<User> users = db.Users.ToList ();
-
-            return View (users);
+            string name = (string) Session ["name"];
+            if (name == null)
+                return View(new UserAndPurchases ());
+            else
+                return View(new UserAndPurchases{ User = new UserContext().Users.Where(c => c.Login == name).FirstOrDefault() });
         }
     }
 }
-

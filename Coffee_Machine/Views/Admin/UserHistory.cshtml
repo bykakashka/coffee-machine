@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>UserHistory</title>
+</head>
+<body>
+    Name: @Model.UserAndPurchases.User.Login
+    @using(Html.BeginForm("Index", "Admin")) {
+        <input type="submit" value="back"/>
+    }
+    @if (@Model.UserAndPurchases.Purchases.Count != 0) {
+    <table>
+        @foreach (var i in @Model.UserAndPurchases.Purchases) {
+        <tr>
+                 <td><h2>
+                 @if (@i.Enable) { <true>@i.Date</true> }
+                 else { <false> @i.Date </false> }
+                 </h2></td>
+            <td>
+                @{ 
+                    var time = DateTime.Now.Subtract(i.Date);
+                }
+            </td>
+        </tr>
+        }
+    </table>
+    }
+    @using(Html.BeginForm("Index", "Admin")) {
+        <input type="submit" value="back"/>
+    }
+
+</body>
+</html>
+

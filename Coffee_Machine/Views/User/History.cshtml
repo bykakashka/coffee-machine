@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+<h5>
+@if (@Model.Purchases.Count != 0) {
+    <table>
+        @foreach (var i in @Model.Purchases) {
+        <tr>
+                 <td><h2>
+                 @if (@i.Enable) { <true>@i.Date</true> }
+                 else { <false> @i.Date </false> }
+                 </h2></td>
+            <td>
+                @{ 
+                    var time = DateTime.Now.Subtract(i.Date);
+                }
+
+                @if ( (time.TotalMinutes < 5) && (i.Enable == true) ){
+                using(Html.BeginForm("DeletePurchase", "User")) {
+                    <input type="hidden" value="@i.Id" name="id"/>
+                    <input type="submit" value="undo"/>
+                }
+                }
+            </td>
+        </tr>
+        }
+    </table>
+}
+</h5>
+
+</body>
+@using(Html.BeginForm("Index", "Home")) {
+    <input type="submit" value="back"/>
+}
+</html>

@@ -1,6 +1,10 @@
-﻿<h2>Welcome to ASP.NET MVC @ViewData["Version"] on @ViewData["Runtime"]!</h2>
-@foreach (var i in @Model) {
-    <h2> @i.Login</h2> <br>
-
+﻿@{
+    var login = Session["name"];
 }
 
+@using(Html.BeginForm("AddPurchase", "User"))
+{
+    if (login != null) {
+        <input type="submit" value="add purchase"/>
+    }
+}

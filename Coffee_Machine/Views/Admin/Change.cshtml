@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Change</title>
+</head>
+<body>
+    Name: @Model.ChangedUser.Login <br>
+    Old balance: @Model.ChangedUser.Balance <br>
+    New balance: @using(Html.BeginForm("ChangeBalance", "Admin")) {
+        <input type="hidden" value="@Model.ChangedUser.Id" name="id">
+        <input type="text" name="newBalance">
+        <input type="submit" value="save">
+    }
+
+</body>
+</html>
+

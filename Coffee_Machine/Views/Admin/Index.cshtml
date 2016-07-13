@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    @if (@Model.Users.Count != 0) {
+        <table>
+        <tr>
+            <td>Login</td>
+            <td>Balance</td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach (var i in @Model.Users) {
+            <tr>
+                <td>@i.Login</td>
+                <td>@i.Balance</td>
+                <td>
+                    @using(Html.BeginForm("Change", "Admin")) {
+                        <input type="hidden" name="id" value="@i.Id">
+                        <input type="submit" value="change">
+                    }
+                </td>
+                <td>@using(Html.BeginForm("UserHistory", "Admin")) {
+                        <input type="hidden" name="id" value="@i.Id">
+                        <input type="submit" value="history">
+                    }
+                </td>
+            </tr>
+        }
+        </table>
+    }
+</body>
+</html>
+
