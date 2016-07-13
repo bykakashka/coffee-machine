@@ -20,13 +20,6 @@
                 @{ 
                     var time = DateTime.Now.Subtract(i.Date);
                 }
-
-                @if ( (time.TotalMinutes < 5) && (i.Enable == true) ){
-                using(Html.BeginForm("DeletePurchase", "User")) {
-                    <input type="hidden" value="@i.Id" name="id"/>
-                    <input type="submit" value="undo"/>
-                }
-                }
             </td>
         </tr>
         }
