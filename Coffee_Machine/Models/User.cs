@@ -15,6 +15,9 @@ namespace Coffee_Machine
         [Column("balance")]
         public decimal Balance { get; set; }
 
+        [Column("root")]
+        public bool IsRoot { get; set; }
+
         public User (string login) {
             Login = login;
             Balance = 0;

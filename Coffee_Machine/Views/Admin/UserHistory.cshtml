@@ -1,13 +1,16 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Index</title>
+    <title>UserHistory</title>
 </head>
 <body>
-<h5>
-@if (@Model.Purchases.Count != 0) {
+    Name: @Model.UserAndPurchases.User.Login
+    @using(Html.BeginForm("Index", "Admin")) {
+        <input type="submit" value="back"/>
+    }
+    @if (@Model.UserAndPurchases.Purchases.Count != 0) {
     <table>
-        @foreach (var i in @Model.Purchases) {
+        @foreach (var i in @Model.UserAndPurchases.Purchases) {
         <tr>
                  <td><h2>
                  @if (@i.Enable) { <true>@i.Date</true> }
@@ -28,11 +31,11 @@
         </tr>
         }
     </table>
-}
-</h5>
+    }
+    @using(Html.BeginForm("Index", "Admin")) {
+        <input type="submit" value="back"/>
+    }
 
 </body>
-@using(Html.BeginForm("Index", "Home")) {
-    <input type="submit" value="back"/>
-}
 </html>
+

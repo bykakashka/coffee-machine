@@ -12,7 +12,7 @@ namespace Coffee_Machine.Controllers
 
         private PurchaseContext dbPurchases = new PurchaseContext();
         private UserContext dbUsers = new UserContext();
-        User loggedUser;
+        User loggedUser = new User();
 
         protected override IActionInvoker CreateActionInvoker ()
         {
@@ -25,7 +25,8 @@ namespace Coffee_Machine.Controllers
         public ActionResult History()
         {
             var p = dbPurchases.Purchases.Where(c => c.User_id == loggedUser.Id).OrderByDescending(c => c.Date).ToList();
-            return View (p);
+            return View (new UserAndPurchases {User = loggedUser, Purchases = p});
+            //return View (p);
         }
 
         public ActionResult AddPurchase() {
@@ -45,13 +46,14 @@ namespace Coffee_Machine.Controllers
                 dbPurchases.SaveChanges ();
             }
 
-            return RedirectToAction ("History", "User");
+            return RedirectToAction ("History");
         }
             
         private decimal CostOnDate(DateTime date) {
             CostHistoryContext dbCostHistory = new CostHistoryContext ();
+
             return dbCostHistory.History
-                .Where (c => c.BeginDate < date && (c.EndDate > date || c.EndDate == null))
+                .Where (c => ((c.BeginDate < date) && (c.EndDate == null || c.EndDate > date)))
                 .FirstOrDefault().Cost;
         }
 
