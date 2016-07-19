@@ -8,6 +8,8 @@ namespace Coffee_Machine.Controllers
 {
     public class AutorisationController : Controller
     {
+        DataBaseContext db = new DataBaseContext();
+
         public ActionResult Index()
         {
             return View ();
@@ -15,7 +17,6 @@ namespace Coffee_Machine.Controllers
 
         public ActionResult Login (string login) {
             Session ["name"] = login;
-            UserContext db = new UserContext ();
             var user = db.Users.Where (c => c.Login == login).FirstOrDefault();
             if (user == null) {
                 User newUser = new User (login);

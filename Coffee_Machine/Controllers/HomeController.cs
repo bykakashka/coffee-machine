@@ -9,16 +9,19 @@ namespace Coffee_Machine.Controllers
 {
     public class HomeController : Controller
     {
+        private DataBaseContext db = new DataBaseContext();
         public ActionResult Index ()
         {
             string name = (string) Session ["name"];
             if (name == null)
                 return View(new UserAndTodayCost ());
-            else
-                return View(new UserAndTodayCost{ 
-                    User = new UserContext().Users.Where(c => c.Login == name).FirstOrDefault(),
-                    Cost = new CostHistoryContext().History.Where(c => c.EndDate == Constants.ENDDATE).FirstOrDefault().Cost                   
-                });
+
+            var p = new CostHistory ();
+            p.EndDate = null;
+            return View(new UserAndTodayCost{ 
+                 User = db.Users.Where(c => c.Login == name).FirstOrDefault(),
+                 Cost = db.History.Where(c => ( (c.EndDate == null) || (c.BeginDate <= DateTime.Now && c.EndDate > DateTime.Now) ) ).FirstOrDefault().Cost                   
+            });
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Coffee_Machine
     public class UserAndPurchases
     {
         public User User { get; set; }
-        public List<Purchase> Purchases { get; set; }
+        public IEnumerable<Purchase> Purchases { get; set; }
         public UserAndPurchases ()
         {
             User = new User ();

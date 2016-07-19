@@ -16,7 +16,7 @@ namespace Coffee_Machine
         public DateTime BeginDate { get; set; }
 
         [Column("enddate")]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
             
         public CostHistory ()
         {

@@ -89,12 +89,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserContext.cs" />
     <Compile Include="Models\Purchase.cs" />
-    <Compile Include="Models\PurchaseContext.cs" />
     <Compile Include="Controllers\AutorisationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Models\CostHistoryContext.cs" />
     <Compile Include="Models\UserAndPurchases.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Models\AdminAndUsers.cs" />
@@ -103,7 +100,7 @@
     <Compile Include="Models\CostHistory.cs" />
     <Compile Include="Models\AdminAndCostHistory.cs" />
     <Compile Include="Models\UserAndTodayCost.cs" />
-    <Compile Include="Models\Cnstants.cs" />
+    <Compile Include="Models\DataBaseContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />

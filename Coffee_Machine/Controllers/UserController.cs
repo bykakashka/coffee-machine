@@ -8,23 +8,23 @@ namespace Coffee_Machine.Controllers
 {
     public class UserController : Controller
     {
+        private DataBaseContext db = new DataBaseContext();
+
         const int MAXMINUTESTOREMOVE = 5;
 
-        private PurchaseContext dbPurchases = new PurchaseContext();
-        private UserContext dbUsers = new UserContext();
         User loggedUser = new User();
 
         protected override IActionInvoker CreateActionInvoker ()
         {
             string name = (string)Session ["name"];
 
-            loggedUser = dbUsers.Users.Where (c => c.Login == name).FirstOrDefault ();   
+            loggedUser = db.Users.Where (c => c.Login == name).FirstOrDefault ();   
             return base.CreateActionInvoker ();
         }
             
         public ActionResult History()
         {
-            var p = dbPurchases.Purchases.Where(c => c.User_id == loggedUser.Id).OrderByDescending(c => c.Date).ToList();
+            var p = db.Purchases.Where(c => c.User_id == loggedUser.Id).OrderByDescending(c => c.Date).ToList();
             return View (new UserAndPurchases {User = loggedUser, Purchases = p});
             //return View (p);
         }
@@ -38,22 +38,20 @@ namespace Coffee_Machine.Controllers
         }
 
         public ActionResult DeletePurchase(int id) {
-            Purchase purchase = dbPurchases.Purchases.Where (c => c.Id == id).FirstOrDefault();
+            Purchase purchase = db.Purchases.Where (c => c.Id == id).FirstOrDefault();
 
             if ( (purchase != null) && (DateTime.Now.Subtract(purchase.Date).TotalMinutes < MAXMINUTESTOREMOVE) ) {
                 purchase.Enable = false;
                 RecalculatedBalance(CostOnDate (purchase.Date));
-                dbPurchases.SaveChanges ();
+                db.SaveChanges ();
             }
 
             return RedirectToAction ("History");
         }
             
         private decimal CostOnDate(DateTime date) {
-            CostHistoryContext dbCostHistory = new CostHistoryContext ();
-
-            return dbCostHistory.History
-                .Where (c => ((c.BeginDate < date) && (c.EndDate == null || c.EndDate > date)))
+            return db.History
+                .Where (c => ((c.BeginDate <= date) && (c.EndDate == null || c.EndDate > date)))
                 .FirstOrDefault().Cost;
         }
 
@@ -63,13 +61,13 @@ namespace Coffee_Machine.Controllers
             purchase.User_id = loggedUser.Id;
             purchase.Enable = true;
 
-            dbPurchases.Purchases.Add (purchase);
-            dbPurchases.SaveChanges ();
+            db.Purchases.Add (purchase);
+            db.SaveChanges ();
         }
 
         private void RecalculatedBalance(decimal cost) {
             loggedUser.Balance += cost;
-            dbUsers.SaveChanges ();
+            db.SaveChanges ();
         }
     }
 }

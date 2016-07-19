@@ -6,7 +6,7 @@ namespace Coffee_Machine
     public class AdminAndCostHistory
     {
         public User User { get; set; }
-        public List<CostHistory> CostHistory { get; set; }
+        public IEnumerable<CostHistory> CostHistory { get; set; }
         public AdminAndCostHistory ()
         {
         }
