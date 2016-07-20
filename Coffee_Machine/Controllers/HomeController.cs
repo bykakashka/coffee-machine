@@ -9,7 +9,6 @@ using System.Web.Mvc.Ajax;
 
 namespace Coffee_Machine.Controllers
 {
-    [RequireHttps]
     public class HomeController : Controller
     {
         private DataBaseContext db = new DataBaseContext();
