@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,6 +28,7 @@ namespace Coffee_Machine.Controllers
                 return RedirectToAction ("Index", "Home");
             
             AdminAndUsers adminAndUsers = new AdminAndUsers();
+
             adminAndUsers.User = admin;
             adminAndUsers.Users = db.Users.OrderBy (c => c.Login).ToList ();
 
@@ -39,6 +40,7 @@ namespace Coffee_Machine.Controllers
                 return RedirectToAction ("Index", "Home");
             
             AdminAndChangedUser adminAndChangedUser = new AdminAndChangedUser ();
+
             adminAndChangedUser.User = admin;
             adminAndChangedUser.ChangedUser = db.Users.Where (c => c.Id == id).FirstOrDefault ();
 
@@ -75,9 +77,7 @@ namespace Coffee_Machine.Controllers
             var lastHistory = db.History.Where (c => ((c.EndDate == null) || (c.EndDate > DateTime.Now) )).FirstOrDefault ();
 
             if (lastHistory == null) {
-                Console.Write ("null");
-                lastHistory = new CostHistory ();
-                //return RedirectToAction ("CoffeeCost");
+                return RedirectToAction ("CoffeeCost");
             }
 
             var timeNow = DateTime.Now;
@@ -104,7 +104,7 @@ namespace Coffee_Machine.Controllers
                 Purchases = db.Purchases.Where(c => c.User_id == id).OrderByDescending(c => c.Date).ToList()
             };
 
-            return View (new AdminAndUserHistory{User = admin, UserAndPurchases = userAndPerchases});
+            return View (new AdminAndUserHistory{ User = admin, UserAndPurchases = userAndPerchases});
         }
     }
 }

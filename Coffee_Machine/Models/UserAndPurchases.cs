@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Coffee_Machine
@@ -7,6 +7,7 @@ namespace Coffee_Machine
     {
         public User User { get; set; }
         public IEnumerable<Purchase> Purchases { get; set; }
+
         public UserAndPurchases ()
         {
             User = new User ();

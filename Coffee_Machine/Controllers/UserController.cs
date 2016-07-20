@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,7 +26,7 @@ namespace Coffee_Machine.Controllers
         {
             var p = db.Purchases.Where(c => c.User_id == loggedUser.Id).OrderByDescending(c => c.Date).ToList();
             return View (new UserAndPurchases {User = loggedUser, Purchases = p});
-            //return View (p);
+
         }
 
         public ActionResult AddPurchase() {
