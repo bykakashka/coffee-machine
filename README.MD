@@ -1,1 +1,0 @@
-[vk] (http://vk.com/belka4ever) <br/>
